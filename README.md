@@ -1,4 +1,4 @@
-### 基于react + webpack 的单页面移动端应用
+### 基于react + webpack 的单页面移动端应用,不依靠create-react-app脚手架
 ### 项目结构
 ```md
     |-- build webpack配置文件夹
