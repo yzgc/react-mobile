@@ -48,9 +48,9 @@ var config = {
 // 使用缓存
 var CACHE_PATH = ROOT_PATH + '/cache';
 // loaders
-config.module.loaders = [];
+config.module.rules = [];
 // 使用 babel 编译 jsx、es6
-config.module.loaders.push({
+config.module.rules.push({
     test: /\.js$/,
     exclude: /node_modules/,
     include: SRC_PATH,
@@ -59,7 +59,7 @@ config.module.loaders.push({
 });
 
 // 编译 sass
-config.module.loaders.push({
+config.module.rules.push({
     test: /\.(scss|css)$/,
     loaders: ['style', 'css', 'sass']
 });
