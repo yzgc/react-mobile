@@ -64,5 +64,15 @@ config.module.rules.push({
     loaders: ['style', 'css', 'sass']
 });
 
+// 自动引入静态资源到相应的页面
+config.plugins.push(
+    new HtmlWebpackPlugin(
+        {
+            filename: 'index.html',
+            chunks: ['app'],
+            template: SRC_PATH + '/index.html'
+        }
+    )
+)
 module.exports = config;
 
