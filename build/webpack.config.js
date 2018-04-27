@@ -1,6 +1,8 @@
 // 引入webpack
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var precss = require('precss')
+var autoPreFixer = require('autoprefixer')
 // 辅助函数
 var utils = require('./utils')
 var pickFiles = utils.pickFiles
@@ -63,6 +65,11 @@ config.module.rules.push({
     test: /\.(scss|css)$/,
     loaders: ['style', 'css', 'sass']
 });
+
+// css autoprefix
+config.precss = function () {
+    return [precss,autoPreFixer]
+}
 
 // 自动引入静态资源到相应的页面
 config.plugins.push(

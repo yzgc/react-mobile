@@ -15,6 +15,15 @@ var localPublicPath = 'http://' + HOST + ':' + PORT + '/';
 config.output.publicPath = localPublicPath;
 config.entry.app.unshift('webpack-dev-server/client?' + localPublicPath);
 
+// 开启热替换相关设置
+console.log(hot)
+if (hot) {
+    config.entry.app.unshift('webpack/hot/only-dev-server')
+    config.plugins.push(new webpack.HotModuleReplacementPlugin())
+    // 注意这里 loaders[0] 是处理 .js 文件的 loader
+    config.module.rules[0].loaders.unshift('react-hot')
+}
+
 new webpackDevServer(webpack(config), {
     hot: hot,
     inline: true,
