@@ -67,9 +67,15 @@ config.module.rules.push({
 });
 
 // css autoprefix
-config.precss = function () {
-    return [precss,autoPreFixer]
-}
+config.plugins.push(
+    new webpack.LoaderOptionsPlugin({
+        options: {
+            postcss: function () {
+                return [precss,autoPreFixer]
+            }
+        }
+    })
+)
 
 // 自动引入静态资源到相应的页面
 config.plugins.push(
