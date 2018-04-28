@@ -53,19 +53,26 @@ var CACHE_PATH = ROOT_PATH + '/cache';
 // loaders
 config.module.rules = [];
 // 使用 babel 编译 jsx、es6
+config.module.rules.push(
+    {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+    }
+)
 config.module.rules.push({
     test: /\.js$/,
     exclude: /node_modules/,
     include: SRC_PATH,
     // 这里使用 loaders ，因为后面还需要添加 loader
     loaders: ['babel?cacheDirectory=' + CACHE_PATH]
-});
+})
 
 // 编译 sass
 config.module.rules.push({
     test: /\.(scss|css)$/,
     loaders: ['style', 'css', 'sass']
-});
+})
 
 // css autoprefix
 config.plugins.push(
