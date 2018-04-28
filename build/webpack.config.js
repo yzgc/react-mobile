@@ -113,7 +113,7 @@ config.plugins.push(
 )
 
 // 压缩js , css 生产环境使用
-if (true) {
+if (__DEV__) {
     // js , css
     // config.plugins.push(
     //     new webpack.optimize.UglifyJsPlugin({

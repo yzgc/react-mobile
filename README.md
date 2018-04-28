@@ -7,9 +7,11 @@
         |-- webpack.dev.js     开发配置
         |-- webpack.release.js 发布配置
     |-- docs 项目说明文档
+    |-- mocks 模拟数据服务
     |-- src 项目开发目录 我们的代码从这里开始
         |-- config 配置文件
         |-- pages  页面模块
+        |-- styles 样式文件
         |-- utils 工具函数文件夹
         |-- index.html 单页面应用唯一的html
         |-- index.js 入口js
