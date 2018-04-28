@@ -8,7 +8,9 @@
     "test": "tests"
   },
   "scripts": {
+    "clean": "rd /s /q dist",
     "dev": "node build/webpack.dev.js",
+    "build": "npm run clean && webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors",
     "test": "test"
   },
   "repository": {
