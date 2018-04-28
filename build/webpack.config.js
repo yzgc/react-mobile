@@ -33,7 +33,9 @@ var config = {
     },
     output: {
         path:DIST_PATH,
-        filename:'js/[name].[hash].js'
+        filename:'js/[name].[hash].js',
+        publicPath: '/',
+        chunkFilename: '[name].[chunkhash:5].chunk.js'//5位hash值
     },
     module: {},
     resolve: {
