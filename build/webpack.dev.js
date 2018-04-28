@@ -16,7 +16,6 @@ config.output.publicPath = localPublicPath;
 config.entry.app.unshift('webpack-dev-server/client?' + localPublicPath);
 
 // 开启热替换相关设置
-console.log(hot)
 if (hot) {
     config.entry.app.unshift('webpack/hot/only-dev-server')
     config.plugins.push(new webpack.HotModuleReplacementPlugin())

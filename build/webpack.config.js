@@ -18,6 +18,7 @@ var SRC_PATH = ROOT_PATH + '/src'
 var DIST_PATH = ROOT_PATH + '/dist'
 // 是否是开发环境
 var __DEV__ = process.env.NODE_DEV == 'production'
+console.log(process.env.NODE_DEV)
 
 // config
 var alias = pickFiles({
@@ -32,7 +33,7 @@ var config = {
     },
     output: {
         path:DIST_PATH,
-        filename:'js/bundle.js'
+        filename:'js/[name].[hash].js'
     },
     module: {},
     resolve: {
@@ -82,10 +83,55 @@ config.plugins.push(
     new HtmlWebpackPlugin(
         {
             filename: 'index.html',
-            chunks: ['app'],
-            template: SRC_PATH + '/index.html'
+            chunks: ['app','lib'],
+            template: SRC_PATH + '/index.html',
+            minify: {
+                collapseWhitespace: true,
+                collapseInlineTagWhitespace: true,
+                removeRedundantAttributes: true,
+                removeEmptyAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkTypeAttributes: true,
+                removeComments: true
+            }
         }
     )
 )
+
+// 依赖库单独打包
+config.entry.vendor = [
+    'react',
+    'react-dom',
+    'react-router',
+    'redux',
+    'react-redux',
+    'redux-thunk'
+]
+
+config.plugins.push(
+    new  webpack.optimize.SplitChunksPlugin('lib', 'js/lib.js')
+)
+
+// 压缩js , css 生产环境使用
+if (true) {
+    // js , css
+    // config.plugins.push(
+    //     new webpack.optimize.UglifyJsPlugin({
+    //         compress: {
+    //             warnings: false
+    //         }
+    //     })
+    // )
+}
+
+// 图片压缩
+config.module.rules.push({
+    test: /\.(?:jpg|gif|png|svg)$/,
+    loaders: [
+        'url?limit=8000&name=img/[hash].[ext]',
+        'image-webpack'
+    ]
+})
+
 module.exports = config;
 
