@@ -56,6 +56,18 @@ var config = {
 var CACHE_PATH = ROOT_PATH + '/cache';
 // loaders
 config.module.rules = [];
+// 配置bundle-loader
+// config.module.rules.unshift(
+//     {
+//         test: /\.bundle\.js$/,
+//         loader: 'bundle-loader',
+//         exclude: /node_modules/,
+//         options: {
+//             lazy: true,
+//             name: '[name]'
+//         }
+//     }
+// )
 // 使用 babel 编译 jsx、es6
 config.module.rules.push(
     {
@@ -143,6 +155,13 @@ config.module.rules.push({
         'image-webpack'
     ]
 })
+
+// 使用ProvidePlugin加载的模块在使用时将不再需要import和require进行引入
+config.plugins.push(
+    new webpack.ProvidePlugin({
+        "React": "react",
+    })
+)
 
 module.exports = config;
 
