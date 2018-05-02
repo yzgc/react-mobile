@@ -10,7 +10,7 @@ ReactDOM .render(
         <div>
             {
                 routes.map((item, i) => {
-                    return  <Route key={i} path={item.path} component={item.component()}/>
+                    return  <Route exact={i == 0} key={i} path={item.path} component={item.component()}/>
                 })
             }
         </div>
