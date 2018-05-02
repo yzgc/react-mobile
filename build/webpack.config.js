@@ -10,6 +10,8 @@ var fullPath = utils.fullPath
 var getIP = utils.getIP
 
 
+// 获取运行环境变量
+process.env.NODE_ENV = (process.env.NODE_ENV || 'development').trim()
 // 项目根路径
 var ROOT_PATH = fullPath('../')
 // 项目源码路径
@@ -17,8 +19,8 @@ var SRC_PATH = ROOT_PATH + '/src'
 // 生产存放路径
 var DIST_PATH = ROOT_PATH + '/dist'
 // 是否是开发环境
-var __DEV__ = process.env.NODE_DEV == 'production'
-console.log(process.env.NODE_DEV)
+var __DEV__ = process.env.NODE_ENV == 'production'
+console.log(process.env.NODE_ENV)
 
 // config
 var alias = pickFiles({
@@ -35,7 +37,7 @@ var config = {
         path:DIST_PATH,
         filename:'js/[name].[hash].js',
         publicPath: '/',
-        chunkFilename: '[name].[chunkhash:5].chunk.js'//5位hash值
+        chunkFilename: '[name]-[id].[chunkhash:5].chunk.js'//5位hash值
     },
     module: {},
     resolve: {

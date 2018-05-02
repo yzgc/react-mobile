@@ -6,6 +6,14 @@ import { routes } from './route/route'
 console.log(routes)
 
 ReactDOM .render(
-    <Router routes={routes}></Router>,
+    <Router basename="/">
+        <div>
+            {
+                routes.map((item, i) => {
+                    return  <Route key={i} path={item.path} component={item.component()}/>
+                })
+            }
+        </div>
+    </Router>,
     document.getElementById('root')
 )
