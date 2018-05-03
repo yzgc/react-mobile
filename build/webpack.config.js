@@ -86,21 +86,46 @@ config.module.rules.push({
 })
 
 // 编译 sass
-config.module.rules.push({
-    test: /\.(scss|css)$/,
-    loaders: ['style-loader', 'css-loader', 'sass-loader']
-})
+// config.module.rules.push({
+//     test: /\.(scss|css)$/,
+//     loaders: ['style-loader', 'css-loader', 'sass-loader']
+// })
+// 编译css
+config.module.rules.push(
+    { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+)
+// 编译sass
+config.module.rules.push(
+    { test: /\.scss$/,use: [
+        {loader: 'style-loader'},
+        {
+            loader: 'css-loader',
+            options: {
+                sourceMap: true,
+                modules: true,
+                localIdentName: '[local]_[hash:base64:5]'
+            }
+        },
+        {loader: 'sass-loader', options: {sourceMap: true}},
+        {loader: 'postcss-loader',options: {
+            sourceMap: true,
+            config: {
+                path: 'postcss.config.js'  // 这个得在项目根目录创建此文件
+            }
+        }}
+     ]}
+)
 
 // css autoprefix
-config.plugins.push(
-    new webpack.LoaderOptionsPlugin({
-        options: {
-            postcss: function () {
-                return [require('postcss-px2rem')(),precss,autoPreFixer]
-            }
-        }
-    })
-)
+// config.plugins.push(
+//     new webpack.LoaderOptionsPlugin({
+//         options: {
+//             postcss: function () {
+//                 return [require('postcss-px2rem')(),precss,autoPreFixer]
+//             }
+//         }
+//     })
+// )
 
 // 自动引入静态资源到相应的页面
 config.plugins.push(
