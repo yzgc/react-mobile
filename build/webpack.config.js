@@ -3,6 +3,7 @@ var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var precss = require('precss')
 var autoPreFixer = require('autoprefixer')
+var px2rem = require('postcss-px2rem')
 // 辅助函数
 var utils = require('./utils')
 var pickFiles = utils.pickFiles
@@ -87,7 +88,7 @@ config.module.rules.push({
 // 编译 sass
 config.module.rules.push({
     test: /\.(scss|css)$/,
-    loaders: ['style', 'css', 'sass']
+    loaders: ['style-loader', 'css-loader', 'sass-loader']
 })
 
 // css autoprefix
@@ -95,7 +96,7 @@ config.plugins.push(
     new webpack.LoaderOptionsPlugin({
         options: {
             postcss: function () {
-                return [precss,autoPreFixer]
+                return [require('postcss-px2rem')(),precss,autoPreFixer]
             }
         }
     })
