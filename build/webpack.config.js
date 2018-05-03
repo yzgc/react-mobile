@@ -106,13 +106,13 @@ config.module.rules.push(
                 localIdentName: '[local]_[hash:base64:5]'
             }
         },
-        {loader: 'sass-loader', options: {sourceMap: true}},
         {loader: 'postcss-loader',options: {
             sourceMap: true,
             config: {
                 path: 'postcss.config.js'  // 这个得在项目根目录创建此文件
             }
-        }}
+        }},
+        {loader: 'sass-loader', options: {sourceMap: true}}
      ]}
 )
 
