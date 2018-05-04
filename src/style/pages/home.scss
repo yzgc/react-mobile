@@ -1,0 +1,7 @@
+$index: '/static/index/index.png';
+.home {
+  width: 100%;
+  height: 375px;
+  background-image: url($index);
+  background-size: 100% 100%;
+}

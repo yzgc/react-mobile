@@ -11,6 +11,7 @@
     "clean": "rd /s /q dist",
     "dev": "node build/webpack.dev.js",
     "build": "npm run clean && webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors",
+    "compile": "webpack --mode production --config build/webpack.config.js",
     "test": "test"
   },
   "repository": {
@@ -35,6 +36,7 @@
     "bundle-loader": "^0.5.6",
     "css-loader": "^0.28.11",
     "fastclick": "^1.0.6",
+    "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.8.3",
     "postcss-loader": "^2.1.4",

@@ -14,10 +14,6 @@ window.onresize = flexBox
 ReactDOM .render(
     <Router basename="/">
         <div>
-            <ul style={{ listStyleType: 'none', padding: 0 }}>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/login">Login</Link></li>
-            </ul>
             {
                 routes.map((item, i) => {
                     return  <Route exact={i == 0} key={i} path={item.path} component={item.component}/>

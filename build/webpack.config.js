@@ -158,14 +158,39 @@ if (__DEV__) {
     // )
 }
 
-// 图片压缩
-config.module.rules.push({
-    test: /\.(?:jpg|gif|png|svg)$/,
-    loaders: [
-        'url?limit=8000&name=img/[hash].[ext]',
-        'image-webpack'
-    ]
-})
+// 图片压缩以及模块化引入
+config.module.rules.push(
+    {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+            'file-loader',
+            {
+                loader: 'image-webpack-loader',
+                options: {
+                    mozjpeg: {
+                        progressive: true,
+                        quality: 65
+                    },
+                    // optipng.enabled: false will disable optipng
+                    optipng: {
+                        enabled: false,
+                    },
+                    pngquant: {
+                        quality: '65-90',
+                        speed: 4
+                    },
+                    gifsicle: {
+                        interlaced: false,
+                    },
+                    // the webp option will enable WEBP
+                    webp: {
+                        quality: 75
+                    }
+                }
+            },
+        ],
+    }
+)
 
 // 使用ProvidePlugin加载的模块在使用时将不再需要import和require进行引入
 config.plugins.push(
