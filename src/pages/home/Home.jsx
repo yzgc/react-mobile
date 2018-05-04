@@ -1,5 +1,5 @@
 import React from 'react'
-import index from '../../../static/images/index.png'
+// import index from '../../../static/images/two.jpg'
 class Home extends React.Component {
     render() {
         const style = {
@@ -9,7 +9,7 @@ class Home extends React.Component {
             <div>
                 <div className="home"></div>
                 <div style={style}>
-                    <img src={index} alt=""/>
+                    <img src="../../../static/images/two.jpg" alt=""/>
                 </div>
             </div>
         )
