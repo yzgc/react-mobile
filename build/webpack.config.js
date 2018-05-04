@@ -85,16 +85,12 @@ config.module.rules.push({
     loaders: ['babel?cacheDirectory=' + CACHE_PATH]
 })
 
-// 编译 sass
-// config.module.rules.push({
-//     test: /\.(scss|css)$/,
-//     loaders: ['style-loader', 'css-loader', 'sass-loader']
-// })
 // 编译css
 config.module.rules.push(
     { test: /\.css$/, use: ['style-loader', 'css-loader'] }
 )
-// 编译sass
+
+// 编译sass并自动加入前缀，自动转化rem
 config.module.rules.push(
     { test: /\.scss$/,use: [
         {loader: 'style-loader'},
@@ -102,7 +98,7 @@ config.module.rules.push(
             loader: 'css-loader',
             options: {
                 sourceMap: true,
-                modules: true,
+                modules: false,
                 localIdentName: '[local]_[hash:base64:5]'
             }
         },
@@ -115,17 +111,6 @@ config.module.rules.push(
         {loader: 'sass-loader', options: {sourceMap: true}}
      ]}
 )
-
-// css autoprefix
-// config.plugins.push(
-//     new webpack.LoaderOptionsPlugin({
-//         options: {
-//             postcss: function () {
-//                 return [require('postcss-px2rem')(),precss,autoPreFixer]
-//             }
-//         }
-//     })
-// )
 
 // 自动引入静态资源到相应的页面
 config.plugins.push(
