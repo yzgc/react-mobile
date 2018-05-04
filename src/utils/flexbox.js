@@ -23,6 +23,11 @@ const flexBox = () => {
     const width = screenWidth()
     // 按照750设计稿，比例为100
     let fontSize = width / 7.5
+    // 大于768不缩放
+    // pc端不缩放
+    if (width > 768) {
+        fontSize = 50
+    }
     document.documentElement.style.fontSize = `${fontSize}px`
     modifileRootRem()
 }
