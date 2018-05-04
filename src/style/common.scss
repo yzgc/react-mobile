@@ -170,13 +170,13 @@ html,
 body {
   background-color: #f5f5f9;
   overflow-x: hidden;
-  max-width:750px;/*px*/
+  max-width:750px;/*no*/
   margin: 0 auto;
 }
 
 body{
   width: 100%;
-  max-width:750px;/*px*/
+  max-width:750px;/*no*/
   margin: 0 auto;
   /* position: relative; */
   -webkit-user-select: none;
@@ -184,7 +184,7 @@ body{
   color: #000;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-size: 16px;
+  font-size: 16px;/*no*/
 }
 
 a,
