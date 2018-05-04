@@ -1,5 +1,5 @@
 import React from 'react'
-import index from '../../../static/index/index.png'
+import index from '../../../static/images/index.png'
 class Home extends React.Component {
     render() {
         const style = {
