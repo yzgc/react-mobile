@@ -1,6 +1,7 @@
 // 引入webpack
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var MiniCssExtractPlugin = require("mini-css-extract-plugin")
 var precss = require('precss')
 var autoPreFixer = require('autoprefixer')
 var px2rem = require('postcss-px2rem')
@@ -87,13 +88,14 @@ config.module.rules.push({
 
 // 编译css
 config.module.rules.push(
-    { test: /\.css$/, use: ['style-loader', 'css-loader'] }
+    { test: /\.css$/, use: [MiniCssExtractPlugin.loader,'style-loader', 'css-loader'] }
 )
 
 // 编译sass并自动加入前缀，自动转化rem
 config.module.rules.push(
     { test: /\.scss$/,use: [
         {loader: 'style-loader'},
+        {loader: MiniCssExtractPlugin.loader}, // 一定要放在style-loader后面
         {
             loader: 'css-loader',
             options: {
@@ -108,7 +110,7 @@ config.module.rules.push(
                 path: 'postcssrc.js'  // 这个得在项目根目录创建此文件
             }
         }},
-        {loader: 'sass-loader', options: {sourceMap: true}}
+        {loader: 'sass-loader', options: {sourceMap: true}} // 要放在最后
      ]}
 )
 
@@ -193,6 +195,14 @@ config.module.rules.push(
             // }
         ],
     }
+)
+
+// 抽取css
+config.plugins.push(
+    new MiniCssExtractPlugin({
+        filename: "css/[name].css",
+        chunkFilename: "[id].css"
+    })
 )
 
 // 使用ProvidePlugin加载的模块在使用时将不再需要import和require进行引入
