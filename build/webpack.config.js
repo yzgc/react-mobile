@@ -2,6 +2,7 @@
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var MiniCssExtractPlugin = require("mini-css-extract-plugin")
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 var precss = require('precss')
 var autoPreFixer = require('autoprefixer')
 var px2rem = require('postcss-px2rem')
@@ -151,13 +152,12 @@ config.plugins.push(
 // 压缩js , css 生产环境使用
 if (__DEV__) {
     // js , css
-    // config.plugins.push(
-    //     new webpack.optimize.UglifyJsPlugin({
-    //         compress: {
-    //             warnings: false
-    //         }
-    //     })
-    // )
+    config.plugins.push(
+        new UglifyJsPlugin({
+            test: /\.js($|\?)/i,
+            exclude: /\/node_modules/
+        })
+    )
 }
 
 // 图片压缩以及模块化引入
