@@ -52,7 +52,10 @@ var config = {
                 "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV || 'development')
             }
         )
-    ]
+    ],
+    performance: {
+        hints: process.env.NODE_ENV === 'production' ? "warning" : false
+    }
 };
 
 // 使用缓存
