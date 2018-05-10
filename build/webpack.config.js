@@ -117,7 +117,7 @@ config.plugins.push(
     new HtmlWebpackPlugin(
         {
             filename: 'index.html',
-            chunks: ['app','lib'],
+            chunks: ['app','vendor'],
             template: SRC_PATH + '/index.html',
             minify: {
                 collapseWhitespace: true,
@@ -143,7 +143,7 @@ config.entry.vendor = [
 ]
 
 config.plugins.push(
-    new  webpack.optimize.SplitChunksPlugin('lib', 'js/lib.js')
+    new  webpack.optimize.SplitChunksPlugin('vendor', 'js/vendor.js')
 )
 
 // 压缩js , css 生产环境使用
