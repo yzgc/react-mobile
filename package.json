@@ -10,6 +10,7 @@
   "scripts": {
     "clean": "rd /s /q dist",
     "dev": "node build/webpack.dev.js",
+    "mock": "node server/server.js",
     "build": "npm run clean && webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors",
     "compile": "npm run clean && webpack --mode production --config build/webpack.config.js --progress --colors",
     "test": "test"
@@ -35,6 +36,7 @@
     "babel-preset-react": "^6.24.1",
     "bundle-loader": "^0.5.6",
     "css-loader": "^0.28.11",
+    "express-mockjs": "^0.4.9",
     "fastclick": "^1.0.6",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
@@ -54,6 +56,7 @@
     "webpack-dev-server": "^3.1.3"
   },
   "dependencies": {
+    "morgan": "^1.9.0",
     "postcss-px2rem": "^0.3.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",

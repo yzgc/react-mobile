@@ -13,7 +13,7 @@ function http(inf, params, callback) {
         params = {}
     }
     const type = inf.type.toLowerCase()
-    // url为完整url
+    // url为相对路径
     let req = request[type](inf.url).set(getCommonHeader())
     req[type == 'post' ? 'send' : 'query'](params).then( res => {
         const result = JSON.parse(res.text)
