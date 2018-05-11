@@ -11,7 +11,7 @@
     "clean": "rd /s /q dist",
     "dev": "node build/webpack.dev.js",
     "build": "npm run clean && webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors",
-    "compile": "npm run clean && webpack --mode production --config build/webpack.config.js",
+    "compile": "npm run clean && webpack --mode production --config build/webpack.config.js --progress --colors",
     "test": "test"
   },
   "repository": {

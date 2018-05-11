@@ -33,6 +33,7 @@ var alias = pickFiles({
 
 var config = {
     context: SRC_PATH,
+    mode: process.env.NODE_ENV,
     entry: {
         app: ['../src/index.js']
     },
