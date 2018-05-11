@@ -8,8 +8,8 @@ const config = {
     center: {
         // test
         getTest: {
-            url: API_ROOT + '/www.ddy98123.com',
-            type: type.GET
+            url: 'http://192.168.51.254:8001/api/getPersonalData',
+            type: type.POST
         }
     }
 }

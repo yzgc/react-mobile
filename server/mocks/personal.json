@@ -1,0 +1,32 @@
+/**
+ * 个人信息
+ *
+ * @url /getPersonalData
+ * 返回说明
+ * code: 0 成功，3001未登录状态
+ */
+{
+  "code":0,
+  "data":{
+    "amountDepositLimit":"5",
+    "available":"1",
+    "balance":"199991.92",
+    "bankAlias":"",
+    "bankCode":"",
+    "bankName":"",
+    "cardNo":"1234",
+    "dayDepositLimit":"5",
+    "depositFeeRatio":1,
+    "frozen":"1000.00",
+    "ifTransPwd":"1",
+    "nickName":"@name",
+    "spreadCode":"15319430691",
+    "startDepositLimit":"100",
+    "status":"1",
+    "userName":"15319430691",
+    "withdrawFee":"3",
+    "usingBonusAmount":188
+  },
+  "msg":"请求成功"
+}
+
