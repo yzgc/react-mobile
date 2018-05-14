@@ -1,4 +1,5 @@
-const API_ROOT = '/api'
+import {RUNNING_URL} from './apiConfig'
+const API_ROOT = RUNNING_URL + '/api'
 const type = {
     POST: 'post',
     GET: 'get'
@@ -8,7 +9,7 @@ const config = {
     center: {
         // test
         getTest: {
-            url: 'http://192.168.51.254:8001/api/getPersonalData',
+            url:  API_ROOT + '/getPersonalData',
             type: type.POST
         }
     }
