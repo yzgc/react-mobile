@@ -1,10 +1,18 @@
 import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as Actions from '../../store/actions/actions'
 import ApiQuest from '../../utils/http'
 import Api from '../../config/api'
 
 class Login extends React.Component {
     componentDidMount() {
         this.getTest()
+        this.props.actions.setPersonal()
+        console.log(this.props.user)
+        setTimeout(() => {
+            console.log(this.props.user)
+        },3000)
     }
 
     getTest() {
@@ -30,5 +38,12 @@ class Login extends React.Component {
     }
 }
 
-export default Login
+export default connect(
+    state => ({
+        user: state.user
+    }),
+    dispatch => ({
+        actions: bindActionCreators(Actions, dispatch)
+    })
+)(Login)
 

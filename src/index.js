@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store from './store/createStore'
 // 导入路由
 import { routes } from './route/route'
 // 导入样式
@@ -12,14 +14,16 @@ flexBox()
 window.onresize = flexBox
 
 ReactDOM .render(
-    <Router basename="/">
-        <div>
-            {
-                routes.map((item, i) => {
-                    return  <Route exact={i == 0} key={i} path={item.path} component={item.component}/>
-                })
-            }
-        </div>
-    </Router>,
+    (<Provider store={store}>
+        <Router basename="/">
+            <div>
+                {
+                    routes.map((item, i) => {
+                        return  <Route exact={i == 0} key={i} path={item.path} component={item.component}/>
+                    })
+                }
+            </div>
+        </Router>
+    </Provider>),
     document.getElementById('root')
 )
