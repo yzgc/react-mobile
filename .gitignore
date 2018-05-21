@@ -5,6 +5,7 @@
 node_modules/
 dist/
 test/
+server/log/
 npm-debug.log
 test/unit/coverage
 test/e2e/reports
