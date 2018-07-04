@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import * as Actions from '../../store/actions/actions'
 import ApiQuest from '../../utils/http'
 import Api from '../../config/api'
+import { link } from '../../utils/common'
 
 class Login extends React.Component {
     componentDidMount() {
@@ -13,6 +14,8 @@ class Login extends React.Component {
         setTimeout(() => {
             console.log(this.props.user)
         },3000)
+        // test
+        link("1")
     }
 
     getTest() {
